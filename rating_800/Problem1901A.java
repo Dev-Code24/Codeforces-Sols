@@ -1,4 +1,4 @@
-package rating_800;
+
 import java.util.Scanner;
 
 /**
