@@ -2,14 +2,11 @@ import java.util.Scanner;
 
 public class Problem1814A {
     private static void solve(Scanner sc) {
-        int n = sc.nextInt();
-        int k = sc.nextInt();
-        if (n % 2 == 0)
-            System.out.println("YES");
-        else if (k % 2 != 0)
-            System.out.println("YES");
-        else
-            System.out.println("NO");
+        long n = sc.nextLong();
+        long k = sc.nextLong();
+        
+        String res = n % 2 == 0 || k % 2 != 0 ? "YES" : "NO";
+        System.out.println(res);
     }
 
     public static void main(String[] args) {
