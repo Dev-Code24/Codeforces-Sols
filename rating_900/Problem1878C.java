@@ -1,5 +1,5 @@
 import java.util.*;
-
+// for sol explanation -> https://chatgpt.com/c/a4e30d00-3b98-49d9-857b-8c918e609961
 public class Problem1878C {
     private static void solve(Scanner sc) {
         long n = sc.nextLong(); 
