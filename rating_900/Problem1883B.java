@@ -17,11 +17,12 @@ public class Problem1883B {
             if (map.get(ch) % 2 != 0)
                 char_with_odd_occurence++;
         }
-        if (char_with_odd_occurence - k > 1) 
+        if (char_with_odd_occurence - k > 1)
             System.out.println("NO");
         else
             System.out.println("YES");
     }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int T = sc.nextInt();
