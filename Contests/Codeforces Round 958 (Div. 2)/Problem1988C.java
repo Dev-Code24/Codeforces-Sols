@@ -6,7 +6,17 @@ import java.util.*;
 public class Problem1988C {
     public static void solve(Scanner sc) {
         long n = sc.nextLong();
-
+        /*
+         * So whats happening is as per the observation from the example n = 23
+         * if we consider n = 1 0 1 1 1 here total setBits are 4 hence only 4 + 1
+         * will be the length of the array that is asked
+         * and then for n = 23
+         * a1 = off 0 on off on ( 0 0 1 0 1 )
+         * a2 = on 0 off on off ( 1 0 0 1 0 )
+         * a3 = on 0 on off on ( 1 0 1 0 1 )
+         * a4 = on 0 on on off ( 1 0 1 1 0 )
+         * a5 = on 0 on on on ( 1 0 1 1 1 )
+         */
         // Check if n is a power of 2
         if (Long.bitCount(n) == 1) {
             // If n is a power of 2, output 1 and n itself
@@ -20,8 +30,11 @@ public class Problem1988C {
         System.out.println(res);
 
         for (int i = 0; i < res; i++) {
+            // cnt tracks the count of set bits encountered
             int cnt = 0;
+            // cur is used to toggle the bit value
             int cur = 0;
+            // val stores the result of the current sequence
             long val = 0;
 
             for (int l = 62; l >= 0; l--) {
@@ -44,6 +57,7 @@ public class Problem1988C {
             System.out.print(val + " ");
         }
         System.out.println();
+
     }
 
     public static void main(String[] args) {
