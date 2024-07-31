@@ -2,17 +2,18 @@ import java.util.*;
 
 public class Problem1840C {
     static int n, k, q;
+    static int a[];
 
     public static void solve(Scanner sc) {
         n = sc.nextInt();
         k = sc.nextInt(); // vacation min days = k
         q = sc.nextInt(); // temp does not rise above q i.e ai <= q always
 
-        int a[] = new int[n];
+        a = new int[n];
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
         }
-        int len = 0, ans = 0;
+        long len = 0, ans = 0; // just had to change the len and ans to long from int
         for (int i = 0; i < n; i++) {
             if (a[i] <= q) {
                 len++;
