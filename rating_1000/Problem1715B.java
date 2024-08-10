@@ -10,25 +10,29 @@ public class Problem1715B {
         b = sc.nextLong();
         s = sc.nextLong();
 
-        List<Long> a = new ArrayList<>();
-        a.add((long) (k * b));
-        s -= k * b;
-        if (s < 0)
+        List<Long> a = new ArrayList<>(n);
+        s -= (k * b);
+        a.add(k * b);
+        if (s < 0) {
             System.out.println(-1);
-        else {
-            for (int i = 0; i < n; ++i) {
-                long now = Math.min(k - 1, s);
-                a.set(i, a.get(i) + now);
-                s -= now;
+            return;
+        } else {
+            for (int i = 0; i < n; i++) {
+                long add = Math.min(k - 1, s);
+                a.add(0l);
+                a.set(i, add + a.get(i));
+                s -= add;
             }
-            if (s > 0)
+            if (s > 0) {
                 System.out.println(-1);
-            else {
-                for (int i = 0; i < n; ++i)
+                return;
+            } else {
+                for (int i = 0; i < n; i++) {
                     System.out.print(a.get(i) + " ");
-                System.out.println();
+                }
             }
         }
+        System.out.println();
     }
 
     public static void main(String[] args) {
