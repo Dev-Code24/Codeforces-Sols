@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.*;
 
 /*
@@ -7,46 +8,45 @@ import java.util.*;
  * if q = p or q = rev(p), then bob will win because, whenever Alice removes something from the front or
  * the end of her array, bob can remove the same thing from the front or the end his array
  * 
+ * Dont know why the arraylist code did not work, in fact the code with scanner also did not work
+ * Hence I used the bufferReader
+ * 
  */
 public class Problem2002B {
-    static int n;
-    static List<Integer> a;
-    static List<Integer> b;
 
-    public static void solve(Scanner sc) {
-        n = sc.nextInt();
-        a = new ArrayList<>();
-        b = new ArrayList<>();
+    static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    static BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        for (int i = 0; i < n; i++) {
-            a.add(sc.nextInt());
-
-        }
-        for (int i = 0; i < n; i++) {
-            b.add(sc.nextInt());
-        }
-
-        if (a.equals(b)) {
-            System.out.println("Bob");
-            return;
-        }
-        Collections.reverse(a);
-        if (a.equals(b)) {
-            System.out.println("Bob");
-            return;
-        }
-
-        System.out.println("Alice");
-
+    public static void main(String[] args) throws IOException {
+        int t = Integer.parseInt(reader.readLine());
+        while (t-- > 0)
+            solve();
+        writer.flush();
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        while (T-- > 0) {
-            solve(sc);
+    static void solve() throws IOException {
+        int n = Integer.parseInt(reader.readLine());
+        int[] a = new int[n], b = new int[n];
+        String[] s = reader.readLine().split(" ");
+        for (int i = 0; i < n; i++)
+            a[i] = Integer.parseInt(s[i]);
+        s = reader.readLine().split(" ");
+        for (int i = 0; i < n; i++)
+            b[i] = Integer.parseInt(s[i]);
+        boolean f1 = true, f2 = true;
+        for (int i = 0; i < n; i++) {
+            if (a[i] != b[i])
+                f1 = false;
+            if (a[i] != b[n - i - 1])
+                f2 = false;
+            if (!f1 && !f2)
+                break;
         }
-        sc.close();
+        if (f1 || f2) {
+            writer.write("Bob\n");
+        } else {
+            writer.write("Alice\n");
+        }
     }
 
     // private static long gcd(long a, long b) {
