@@ -1,4 +1,4 @@
-# TLE Eliminators CP-31
+# My Codeforces Journey
 
 Here I am just putting the solutions for the codeforces problems that I am solving.
 These questions are selected from the TLE Eliminators CP-31 Sheet.
