@@ -1,5 +1,10 @@
 import java.util.*;
 
+/*
+ * To reach the solution, we just need to check if there exist a pair such that
+ * gcd(ai,aj) <= 2
+ * [a1,a2] is good when a is beautiful
+ */
 public class Problem1789A {
     static int n;
     static int a[];
