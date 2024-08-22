@@ -2,14 +2,36 @@ import java.util.*;
 
 public class Problem1352A {
     static int n;
+    static List<Integer> ans;
 
     public static void solve(Scanner sc) {
         n = sc.nextInt();
+        ans = new ArrayList<>();
+        int size = 0;
+        while (n > 0) {
+            ans.add(n % 10);
+            if (n % 10 != 0) {
+                size++;
+            }
+            n /= 10;
+        }
+        Collections.reverse(ans);
+        System.out.println(size);
+        for (int i = 0; i < ans.size(); i++) {
+            if (ans.get(i) != 0) {
+                int num = ans.get(i) * (int) Math.pow(10, ans.size() - i - 1);
+                System.out.print(num + " ");
+            }
+        }
+        System.out.println();
     }
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        solve(sc);
+        int T = sc.nextInt();
+        while (T-- > 0) {
+            solve(sc);
+        }
         sc.close();
     }
 
