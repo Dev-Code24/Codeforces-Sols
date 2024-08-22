@@ -24,7 +24,7 @@ public class Problem1141A {
                 break;
             }
         }
-        System.out.println(i);
+        System.out.println(m == 1 ? i : -1);
     }
 
     public static void main(String[] args) {
