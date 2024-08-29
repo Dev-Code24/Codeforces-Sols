@@ -21,3 +21,15 @@ LCM(a,b) * GCD(a,b) = a*b
 Some more LCM properties
 LCM(a,0) = a
 ```
+
+```
+Suppose an array a is given of length n, and it is given to find out a number x such that by doing operation ai = ai % x, i = 0 -> n-1, array should become a palindrome.
+Here we can use GCD
+int ans = 0;
+    for (int i = 0; i < n / 2; i++) {
+        int temp = Math.abs(a[i] - a[n - i - 1]);
+        ans = gcd(ans, temp);
+
+    }
+System.out.println(ans);
+```
