@@ -33,3 +33,23 @@ int ans = 0;
     }
 System.out.println(ans);
 ```
+
+```
+Suppose it is given to find out coprime triplet between l and r, inclusive both.
+Also one more condition is once a triplet (a,b,c) is counted, any of the number among the triplet can be a part of one more triplet.
+
+So the triplet has to have at most 1 even number, thus the triplets can be in the form of
+(a,b,c) = (odd,odd,odd) or (odd,even,odd)
+or
+(a,b,c) = (2k-1, 2k, 2k+1)
+
+To prove, gcd(a,b) = gcd(b,c) = gcd(a,c) = 1,
+
+since 2k is the only even number, thus, its gcd with other two numbers will be 1,
+In case of other two numbers ,
+gcd(2k-1,2k+1) = gcd(2k-1, 2k + 1 - (2k-1)) = gcd(2k-1,2) = 1
+[since, gcd(x,y) = gcd(x-y), x>= y]
+
+We can use a counter to count such triplets
+at the end the counter value should be equal to the (number of odd numbers between l & r)/2
+```
