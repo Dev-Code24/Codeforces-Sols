@@ -36,7 +36,7 @@ System.out.println(ans);
 
 ```
 Suppose it is given to find out coprime triplet between l and r, inclusive both.
-Also one more condition is once a triplet (a,b,c) is counted, any of the number among the triplet can be a part of one more triplet.
+Also one more condition is once a triplet (a,b,c) is counted, any of the number among the triplet cannot be a part of one more triplet.
 
 So the triplet has to have at most 1 even number, thus the triplets can be in the form of
 (a,b,c) = (odd,odd,odd) or (odd,even,odd)
