@@ -54,3 +54,8 @@ gcd(2k-1,2k+1) = gcd(2k-1, 2k + 1 - (2k-1)) = gcd(2k-1,2) = 1
 We can use a counter to count such triplets
 at the end the counter value should be equal to the (number of odd numbers between l & r)/2
 ```
+
+```
+If it is asked that, suppose there is an array, and we have to tell, that there exist two subarrays between [l1,r1] and [l2,r2], such that their sum is equal,
+then we just need to check if there is an element which has a frequency greater than 1
+```
