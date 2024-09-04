@@ -1,28 +1,22 @@
 import java.util.*;
 
 public class Problem1872D {
-    static int n, x, y;
+    static long n, x, y;
 
     public static void solve(Scanner sc) {
         n = sc.nextInt();
         x = sc.nextInt();
         y = sc.nextInt();
+        long temp = (x * y) / gcd(x, y);
+        temp = n / temp;
+        long ans = 0;
+        for (long i = 1, j = n; i <= n / x - temp; i++, j--)
+            ans += j;
+        for (long i = 1, j = 1; i <= n / y - temp; i++, j++)
+            ans -= j;
 
-        List<Integer> forx = new ArrayList<>();
-        List<Integer> fory = new ArrayList<>();
-        int multiplicator = 1;
-        long sum1 = 0,sum2 = 0;
-        for (int i = x; i <= n; i = x * multiplicator) {
-            forx.add(i);
-            multiplicator++;
-        }
-        multiplicator = 1;
-        for (int i = y; i <= n; i = y * multiplicator) {
-            fory.add(i);
-            multiplicator++;
-        }
+        System.out.println(ans);
 
-        System.out.println(sum1 - sum2);
     }
 
     public static void main(String[] args) {
@@ -34,14 +28,14 @@ public class Problem1872D {
         sc.close();
     }
 
-    // private static long gcd(long a, long b) {
-    // while (b != 0) {
-    // long temp = b;
-    // b = a % b;
-    // a = temp;
-    // }
-    // return a;
-    // }
+    private static long gcd(long a, long b) {
+        while (b != 0) {
+            long temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
+    }
 
     // private static long lcm(long a, long b) {
     // return a * b / gcd(a, b);
