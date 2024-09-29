@@ -2,21 +2,29 @@ import java.io.*;
 import java.util.*;
 
 public class Template {
+    static BufferedReader br;
+    static PrintWriter out;
+    static StringTokenizer st;
     static int n;
 
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        PrintWriter out = new PrintWriter(new BufferedOutputStream(System.out));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        int T = Integer.parseInt(st.nextToken());
+        br = new BufferedReader(new InputStreamReader(System.in));
+        out = new PrintWriter(new BufferedOutputStream(System.out));
+        int T = Integer.parseInt(nextToken());
         while (T-- > 0) {
-            st = new StringTokenizer(br.readLine()); // use this everytime when taking input or changing line of input
-            n = Integer.parseInt(st.nextToken());
-            // Add your logic here
+            n = Integer.parseInt(nextToken());
+            // Add logic here
         }
         out.flush();
         out.close();
         br.close();
+    }
+
+    static String nextToken() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            st = new StringTokenizer(br.readLine());
+        }
+        return st.nextToken();
     }
 
     // private static long gcd(long a, long b) {
