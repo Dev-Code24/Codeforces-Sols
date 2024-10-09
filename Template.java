@@ -12,7 +12,7 @@ public class Template {
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int T = Integer.parseInt(nextToken());
         while (T-- > 0) {
-            int n = Integer.parseInt(nextToken());
+            int N = Integer.parseInt(nextToken());
             // Add logic here
         }
         out.flush();
