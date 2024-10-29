@@ -46,6 +46,11 @@ public class Template {
     //     long first;
     //     long second;
     //
+    //     Pair() {
+    //         this.first = 0L;
+    //         this.second = 0L;
+    //     }
+
     //     Pair(long _first, long _second) {
     //         this.first = _first;
     //         this.second = _second;
