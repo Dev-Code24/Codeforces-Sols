@@ -59,3 +59,9 @@ at the end the counter value should be equal to the (number of odd numbers betwe
 If it is asked that, suppose there is an array, and we have to tell, that there exist two subarrays between [l1,r1] and [l2,r2], such that their sum is equal,
 then we just need to check if there is an element which has a frequency greater than 1
 ```
+
+```
+To find MEX of an array A which contains N elements, following can be done
+
+MEX = n(n+1)/2  + sum(A)(i:0->N);
+```
