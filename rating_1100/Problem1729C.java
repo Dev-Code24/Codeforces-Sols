@@ -21,14 +21,14 @@ public class Problem1729C {
 
             char start = s.charAt(0), end = s.charAt(s.length() - 1);
             int cost = abs(end - start), count = 0;
-            StringBuilder path = new StringBuilder();
+            String path = "";
 
             if (start <= end) {
                 for (char c = start; c <= end; c++) {
                     if (index.containsKey(c)) {
                         count += index.get(c).size();
                         for (int pos : index.get(c)) {
-                            path.append(pos).append(" ");
+                            path += pos + " ";
                         }
                     }
                 }
@@ -37,14 +37,14 @@ public class Problem1729C {
                     if (index.containsKey(c)) {
                         count += index.get(c).size();
                         for (int pos : index.get(c)) {
-                            path.append(pos).append(" ");
+                            path += pos + " ";
                         }
                     }
                 }
             }
 
             out.println(cost + " " + count);
-            out.println(path.toString().trim());
+            out.println(path.trim());
         }
 
         out.flush();
