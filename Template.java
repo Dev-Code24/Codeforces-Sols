@@ -1,5 +1,7 @@
 import java.io.*;
 import java.util.*;
+ import static java.lang.Integer.parseInt;
+// import static java.lang.Math.min;
 // import static java.lang.Math.min;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
@@ -14,7 +16,7 @@ public class Template {
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int T = Integer.parseInt(nextToken());
         while (T-- > 0) {
-            int N = Integer.parseInt(nextToken());
+            int N = parseInt(nextToken());
             // Add logic here
         }
         out.flush();
