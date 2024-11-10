@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 import static java.lang.Integer.parseInt;
 // import static java.lang.Math.min;
-// import static java.lang.Math.min;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
@@ -12,6 +11,9 @@ public class Template {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
+        // Start timing
+        // long startTime = System.nanoTime();
+
         br = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int TC = parseInt(nextToken());
@@ -19,6 +21,11 @@ public class Template {
             int n = parseInt(nextToken());
             // Add logic here
         }
+
+        // End timing and print elapsed time in seconds
+        // long endTime = System.nanoTime();
+        // double elapsedTimeInSeconds = (endTime - startTime) / 1_000_000_000.0;
+        // out.printf("Elapsed Time: %.6f seconds%n", elapsedTimeInSeconds);
         out.flush();
         out.close();
         br.close();
