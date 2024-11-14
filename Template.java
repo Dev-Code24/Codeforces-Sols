@@ -11,8 +11,6 @@ public class Template {
     static StringTokenizer st;
 
     public static void main(String[] args) throws IOException {
-        // Start timing
-        // long startTime = System.nanoTime();
 
         br = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(new BufferedOutputStream(System.out));
@@ -22,10 +20,6 @@ public class Template {
             // Add logic here
         }
 
-        // End timing and print elapsed time in seconds
-        // long endTime = System.nanoTime();
-        // double elapsedTimeInSeconds = (endTime - startTime) / 1_000_000_000.0;
-        // out.printf("Elapsed Time: %.6f seconds%n", elapsedTimeInSeconds);
         out.flush();
         out.close();
         br.close();
