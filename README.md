@@ -65,3 +65,7 @@ To find MEX of an array A which contains N elements, following can be done
 
 MEX = n(n+1)/2  + sum(A)(i:0->N);
 ```
+
+```
+The common factors of two numbers are divisors of their GCD
+```
