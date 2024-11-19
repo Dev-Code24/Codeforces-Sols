@@ -25,14 +25,14 @@ public class Template {
         br.close();
     }
 
-    private static String nextToken() throws IOException {
+    static String nextToken() throws IOException {
         while (st == null || !st.hasMoreTokens()) {
             st = new StringTokenizer(br.readLine());
         }
         return st.nextToken();
     }
 
-    // private static long gcd(long a, long b) {
+    // static long gcd(long a, long b) {
     //     while (b != 0) {
     //         long temp = b;
     //         b = a % b;
@@ -41,7 +41,7 @@ public class Template {
     //     return a;
     // }
 
-    // private static long lcm(long a, long b) {
+    // static long lcm(long a, long b) {
     //     return a * b / gcd(a, b);
     // }
 
