@@ -12,21 +12,22 @@ public class P4 {
         br = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(new BufferedOutputStream(System.out));
 
-        int n = parseInt(nextToken()), k = parseInt(nextToken()), s = 0;
+        int n = parseInt(nextToken()), k = parseInt(nextToken());
+        double s = 0;
         for (int i = 0; i < n; i++) {
             int x = parseInt(nextToken());
             s += x;
         }
-
-        for (int ans = 0;; ans++) {
-            int a = 2 * (s + ans * k);
-            int b = (2 * k - 1) * (ans + n);
-
-            if (a >= b) {
-                out.println(ans);
-                break;
-            }
+        double avg = Math.round(s / (double) n);
+        int ans = 0;
+        while (avg < k) {
+            n++;
+            s += k;
+            avg = Math.round(s / n);
+            ans++;
         }
+
+        out.println(ans);
 
         out.flush();
         out.close();
