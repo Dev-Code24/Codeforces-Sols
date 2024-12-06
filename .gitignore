@@ -3,5 +3,7 @@ rating_*/input.txt
 Contests/**/input.txt
 Contests/**/output.txt
 Contests/.DS_Store
+theme_cp/**/input.txt
+theme_cp/**/output.txt
 .DS_Store
 .vscode
