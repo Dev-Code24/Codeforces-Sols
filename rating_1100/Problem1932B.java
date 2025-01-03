@@ -1,8 +1,11 @@
 import java.io.*;
 import java.util.*;
 import static java.lang.Integer.parseInt;
+// import static java.lang.Math.min;
+// import static java.lang.Math.max;
+// import static java.lang.Math.abs;
 
-public class Problem1917B {
+public class Problem1932B {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
@@ -14,17 +17,14 @@ public class Problem1917B {
         int TC = parseInt(nextToken());
         while (TC-- > 0) {
             int n = parseInt(nextToken());
-            char s[] = nextToken().toCharArray();
-            int alp[] = new int[26];
-
-            int ans = 0;
+            long ans = 0;
             for (int i = 0; i < n; i++) {
-                if (alp[s[i] - 'a'] == 0) {
-                    ans += n - i;
-                    alp[s[i] - 'a'] = 1;
-                }
+                long x = parseInt(nextToken());
+                ans = (ans / x + 1) * x;
             }
+
             out.println(ans);
+
         }
 
         out.flush();
