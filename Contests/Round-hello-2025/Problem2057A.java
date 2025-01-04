@@ -1,8 +1,11 @@
 import java.io.*;
 import java.util.*;
 import static java.lang.Integer.parseInt;
+import static java.lang.Math.max;
+// import static java.lang.Math.min;
+// import static java.lang.Math.abs;
 
-public class Problem1520D {
+public class Problem2057A {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
@@ -13,16 +16,10 @@ public class Problem1520D {
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int TC = parseInt(nextToken());
         while (TC-- > 0) {
-            int n = parseInt(nextToken());
-            long ans = 0;
-            var mp = new TreeMap<Integer, Integer>();
-            for (int i = 0; i < n; i++) {
-                int x = parseInt(nextToken());
+            long n = parseInt(nextToken()), m = parseInt(nextToken());
 
-                ans += mp.getOrDefault(x - i, 0);
-                mp.put(x - i, mp.getOrDefault(x - i, 0) + 1);
-            }
-            out.println(ans);
+            out.println(max(n, m) + 1);
+
         }
 
         out.flush();
