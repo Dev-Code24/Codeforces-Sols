@@ -1,11 +1,11 @@
 import java.io.*;
 import java.util.*;
 import static java.lang.Integer.parseInt;
-// import static java.lang.Math.min;
+import static java.lang.Math.min;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-public class Problem2057C {
+public class Problem1877C {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
@@ -16,27 +16,28 @@ public class Problem2057C {
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int TC = parseInt(nextToken());
         while (TC-- > 0) {
-            int l = parseInt(nextToken()), r = parseInt(nextToken());
-
-            int a = 0, b = 0, c = 0;
-
-            for (int i = 31; i >= 0; i--) {
-                if ((((l ^ r) >> i) & 1) == 1) {
-                    a |= (1 << i);
-                    b |= (1 << i) - 1;
-                    break;
-                } else {
-                    a |= (l & (1 << i));
-                    b |= (l & (1 << i));
-                }
+            long n = parseInt(nextToken()), m = parseInt(nextToken());
+            int k = parseInt(nextToken());
+            if (k > 3) {
+                out.println(0);
+                continue;
             }
 
-            c = l;
-            while (c == a || c == b) {
-                c++;
+            if (k == 1) {
+                out.println(1);
+                continue;
             }
 
-            out.println(a + " " + b + " " + c);
+            long j = m / n + min(m, n - 1);
+            if (k == 2) {
+                out.println(j);
+                continue;
+            }
+            if (k == 3) {
+                out.println(m - j);
+                continue;
+            }
+
         }
 
         out.flush();
