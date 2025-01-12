@@ -25,9 +25,9 @@ public class Problem1846D {
             double ans = area(h, d);
             for (int i = 0; i + 1 < n; i++) {
                 if (y[i + 1] - y[i] <= h) {
-                    double dd = (double) d * ((h - y[i + 1] + y[i]) / (double) h);
-                    double hh = (y[i + 1] - y[i]);
-                    ans += hh * ((d + dd) / 2.0);
+                    double dd = (double) d * ((h - y[i + 1] + y[i]) /(double) h);
+                    double hh = (h - y[i + 1] + y[i]);
+                    ans += (area(h, d) - area(hh, dd));
                 } else {
                     ans += area(h, d);
                 }
@@ -42,7 +42,7 @@ public class Problem1846D {
     }
 
     static double area(double _h, double _d) {
-        return (_d * _h) / 2.0D;
+        return (0.5D) * _d * _h;
     }
 
     static String nextToken() throws IOException {
