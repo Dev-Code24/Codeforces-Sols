@@ -7,3 +7,5 @@ theme_cp/**/input.txt
 theme_cp/**/output.txt
 .DS_Store
 .vscode
+/.idea
+codeforces.iml
