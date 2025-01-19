@@ -6,37 +6,38 @@ import static java.lang.Integer.parseInt;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-public class Problem1666D {
+public class A {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
 
+    static int a[];
     public static void main(String[] args) throws IOException {
 
         br = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int TC = parseInt(nextToken());
         while (TC-- > 0) {
-            char s[] = nextToken().toCharArray();
-            char t[] = nextToken().toCharArray();
-            int n = s.length, m = t.length;
+            a = new int[5];
+            a[0] = parseInt(nextToken());
+            a[1] = parseInt(nextToken());
+            a[3] = parseInt(nextToken());
+            a[4] = parseInt(nextToken());
 
-            int sa[] = new int[26], ta[] = new int[26];
-            for(char c : s) sa[c - 'A']++;
-            for(char c : t) ta[c - 'A']++;
-
-            int i = 0, j = 0;
-            while(i < n && j < m) {
-                if(s[i] == t[j]) {
-                    if(sa[s[i] - 'A'] == ta[t[j] - 'A']) {
-                        ta[t[j] - 'A']--;
-                        j++;
-                    }
-                }
-                sa[s[i] - 'A']--;
-                i++;
+            a[2] = a[0] + a[1];
+            int ans1 = 0;
+            for(int i = 0; i < 3; i++) {
+                if(a[i] + a[i + 1] == a[i + 2]) ans1++;
             }
-            out.println(j == m ? "YES" : "NO");
+
+            a[2] = a[4] - a[3];
+            int ans2 = 0;
+            for(int i = 1; i + 2 < 5; i++) {
+                if(a[i] + a[i + 1] == a[i + 2]) ans2++;
+            }
+            // 1 2 3 4 5
+            out.println(Math.max(ans1,ans2));
+
         }
 
         out.flush();
