@@ -8,43 +8,43 @@ import static java.lang.Integer.parseInt;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-class DisjointSet {
-    private int parent[], sz[];
-
-    public DisjointSet(int n) {
-        // 1 based indexing
-        parent = new int[n + 1];
-        for(int i = 0; i < n + 1; i++) parent[i] = i;
-        // initial ranking of each element is 0
-        sz = new int[n + 1];
-        Arrays.fill(sz,1);
-    }
-    // find_parent with path compression
-    int find_parent(int node) {
-        if(node == parent[node]) {
-            return node;
-        }
-        return parent[node] = find_parent(parent[node]);
-    }
-    // union by size
-    void union(int u, int v) {
-        int ultimate_par_u = find_parent(u), ultimate_par_v = find_parent(v);
-        if(ultimate_par_u == ultimate_par_v) return ;
-
-        if(sz[ultimate_par_v] > sz[ultimate_par_u]) {
-            parent[ultimate_par_u] = parent[ultimate_par_v];
-            sz[ultimate_par_v] += sz[ultimate_par_u];
-        }else {
-            parent[ultimate_par_v] = parent[ultimate_par_u];
-            sz[ultimate_par_u] += sz[ultimate_par_v];
-        }
-    }
-}
-
 public class E {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
+
+    static class DisjointSet {
+        private int parent[], sz[];
+
+        public DisjointSet(int n) {
+            // 1 based indexing
+            parent = new int[n + 1];
+            for(int i = 0; i < n + 1; i++) parent[i] = i;
+            // initial ranking of each element is 0
+            sz = new int[n + 1];
+            Arrays.fill(sz,1);
+        }
+        // find_parent with path compression
+        int find_parent(int node) {
+            if(node == parent[node]) {
+                return node;
+            }
+            return parent[node] = find_parent(parent[node]);
+        }
+        // union by size
+        void union(int u, int v) {
+            int ultimate_par_u = find_parent(u), ultimate_par_v = find_parent(v);
+            if(ultimate_par_u == ultimate_par_v) return ;
+
+            if(sz[ultimate_par_v] > sz[ultimate_par_u]) {
+                parent[ultimate_par_u] = parent[ultimate_par_v];
+                sz[ultimate_par_v] += sz[ultimate_par_u];
+            }else {
+                parent[ultimate_par_v] = parent[ultimate_par_u];
+                sz[ultimate_par_u] += sz[ultimate_par_v];
+            }
+        }
+    }
 
     static int n, m1, m2;
 
