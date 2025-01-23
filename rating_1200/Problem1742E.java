@@ -1,91 +1,72 @@
+import java.io.*;
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
+// import static java.lang.Math.min;
+import static java.lang.Math.max;
+// import static java.lang.Math.abs;
+
 public class Problem1742E {
+    static BufferedReader br;
+    static PrintWriter out;
+    static StringTokenizer st;
+
     static int n, q;
-    static long pref[];
-    static int prefmax[];
 
-    public static void solve(Scanner sc) {
-        n = sc.nextInt();
-        q = sc.nextInt();
-
-        pref = new long[n + 1];
-        prefmax = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            int a = sc.nextInt();
-            pref[i + 1] = pref[i] + a;
-            if (i == 0) {
-                prefmax[i] = a;
-            } else {
-                prefmax[i] = Math.max(prefmax[i - 1], a);
+    static int upper_bound(ArrayList<Integer> list, int key) {
+        int lo = -1, hi = list.size();
+        while (lo + 1 < hi) {
+            int m = (lo + hi) / 2;
+            if(list.get(m) <= key) {
+                lo = m;
+            }else {
+                hi = m;
             }
         }
-
-        for (int i = 0; i < q; i++) {
-            int k = sc.nextInt();
-            int idx = upper_bound(prefmax, k);
-            System.out.print(pref[idx] + " ");
-        }
-        
-        System.err.println();
-
+        return hi;
     }
 
-    private static int upper_bound(int arr[], int key) {
-        int ans = arr.length;
-        int l = 0, r = arr.length - 1;
-        while (l <= r) {
-            int mid = (l + r) / 2;
-            if (arr[mid] > key) {
-                ans = mid;
-                r = mid - 1;
-            } else {
-                l = mid + 1;
+    public static void main(String[] args) throws IOException {
+
+        br = new BufferedReader(new InputStreamReader(System.in));
+        out = new PrintWriter(new BufferedOutputStream(System.out));
+        int TC = parseInt(nextToken());
+        while (TC-- > 0) {
+            n = parseInt(nextToken());
+            q = parseInt(nextToken());
+
+            long pref[] = new long[n + 1];
+            var pref_max = new ArrayList<Integer>();
+
+            for (int i = 0; i < n; i++) {
+                int a = parseInt(nextToken());
+                if (i == 0) {
+                    pref[1] = a;
+                    pref_max.add(a);
+                } else {
+                    pref[i + 1] = pref[i] + a;
+                    pref_max.add((max(pref_max.get(i - 1), a)));
+                }
             }
+
+            for (int i = 0; i < q; i++) {
+                int k = parseInt(nextToken());
+                int ind = upper_bound(pref_max, k);
+                out.print(pref[ind] + " ");
+            }
+
+            out.println();
         }
-        return ans;
+
+        out.flush();
+        out.close();
+        br.close();
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        while (T-- > 0) {
-            solve(sc);
+    static String nextToken() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            st = new StringTokenizer(br.readLine());
         }
-        sc.close();
-    }
-
-    // private static long gcd(long a, long b) {
-    // while (b != 0) {
-    // long temp = b;
-    // b = a % b;
-    // a = temp;
-    // }
-    // return a;
-    // }
-
-    // private static long lcm(long a, long b) {
-    // return a * b / gcd(a, b);
-    // }
-
-    static class Pair implements Comparable<Pair> {
-        int value;
-        int index;
-
-        Pair(int _first, int _second) {
-            this.value = _first;
-            this.index = _second;
-        }
-
-        @Override
-        public int compareTo(Pair o) {
-            return Long.compare(this.value, o.value);
-        }
-
-        @Override
-        public String toString() {
-            return "(" + value + ',' + index + ")";
-        }
+        return st.nextToken();
     }
 }
