@@ -25,15 +25,15 @@ public class C {
         int TC = parseInt(nextToken());
         while (TC-- > 0) {
             int n = parseInt(nextToken());
-            int a[] = new int[n];
+            long a[] = new long[n];
             for (int i = 0; i < n; i++) a[i] = parseInt(nextToken());
 
             if (n == 1) {
                 out.println(Arrays.stream(a).sum());
             } else {
-                int ans = Arrays.stream(a).sum();
+                long ans = Arrays.stream(a).sum();
                 while(a.length != 1) {
-                    int b[] = new int[a.length - 1];
+                    long b[] = new long[a.length - 1];
                     for(int i = 0; i < a.length - 1; i++) {
                         b[i] = a[i + 1] - a[i];
                     }
