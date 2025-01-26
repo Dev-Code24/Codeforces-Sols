@@ -69,3 +69,7 @@ MEX = n(n+1)/2  + sum(A)(i:0->N);
 ```
 The common factors of two numbers are divisors of their GCD
 ```
+
+```
+GCD(a1,a2,a3,....,an) = GCD(a1, a2 + a3 + a4.....+an)
+```
