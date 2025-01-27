@@ -1,105 +1,121 @@
+import java.io.*;
 import java.util.*;
 
-/*
- * For this problem, since only three elements total from the 3 arrays are needed for the maximum solution,
- * we just need to find the max 3 elements from each arrays such that they dont have the same index.
- * 
- */
+import static java.lang.Math.max;
+import static java.lang.Integer.parseInt;
+
 public class Problem1914D {
-    static int n;
-    static int a[], b[], c[];
-    static int x, y, z;
+    static BufferedReader br;
+    static PrintWriter out;
+    static StringTokenizer st;
 
-    public static void solve(Scanner sc) {
-        n = sc.nextInt();
-        a = new int[n];
-        b = new int[n];
-        c = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            a[i] = sc.nextInt();
+    static int[] max_elements(int arr[]) {
+        int ret[] = {-1, -1, -1};
+        int len = arr.length;
+        for (int i = 0; i < len; i++) {
+            if (ret[0] == -1 || arr[ret[0]] < arr[i]) {
+                ret[2] = ret[1];
+                ret[1] = ret[0];
+                ret[0] = i;
+            } else if (ret[1] == -1 || arr[ret[1]] < arr[i]) {
+                ret[2] = ret[1];
+                ret[1] = i;
+            } else if (ret[2] == -1 || arr[ret[2]] < arr[i]) {
+                ret[2] = i;
+            }
         }
-        for (int i = 0; i < n; i++) {
-            b[i] = sc.nextInt();
-        }
-        for (int i = 0; i < n; i++) {
-            c[i] = sc.nextInt();
-        }
+        return ret;
+    }
 
-        int[] best3A = getBest3(a);
-        int[] best3B = getBest3(b);
-        int[] best3C = getBest3(c);
+    public static void main(String[] args) throws IOException {
 
-        long ans = 0;
+        br = new BufferedReader(new InputStreamReader(System.in));
+        out = new PrintWriter(new BufferedOutputStream(System.out));
+        int TC = parseInt(nextToken());
+        while (TC-- > 0) {
+            int n = parseInt(nextToken());
+            int a[] = new int[n], b[] = new int[n], c[] = new int[n];
+            for (int i = 0; i < n; i++) a[i] = parseInt(nextToken());
+            for (int i = 0; i < n; i++) b[i] = parseInt(nextToken());
+            for (int i = 0; i < n; i++) c[i] = parseInt(nextToken());
 
-        for (int x : best3A) {
-            for (int y : best3B) {
-                for (int z : best3C) {
-                    if (x != y && x != z && y != z) {
-                        ans = Math.max(ans, a[x] + b[y] + c[z]);
+            int aa[] = max_elements(a);
+            int bb[] = max_elements(b);
+            int cc[] = max_elements(c);
+
+            int ans = -1;
+            for (int i : aa) {
+                for (int j : bb) {
+                    for (int k : cc) {
+                        if (i == j || j == k || k == i) continue;
+                        ans = max(ans, a[i] + b[j] + c[k]);
                     }
                 }
             }
+            out.println(ans);
         }
 
-        System.out.println(ans);
+        out.flush();
+        out.close();
+        br.close();
     }
 
-    private static int[] getBest3(int[] arr) {
-        int mx1 = -1, mx2 = -1, mx3 = -1;
-        for (int i = 0; i < arr.length; i++) {
-            if (mx1 == -1 || arr[i] > arr[mx1]) {
-                mx3 = mx2;
-                mx2 = mx1;
-                mx1 = i;
-            } else if (mx2 == -1 || arr[i] > arr[mx2]) {
-                mx3 = mx2;
-                mx2 = i;
-            } else if (mx3 == -1 || arr[i] > arr[mx3]) {
-                mx3 = i;
-            }
+    static String nextToken() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            st = new StringTokenizer(br.readLine());
         }
-
-        return new int[] { mx1, mx2, mx3 };
+        return st.nextToken();
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        while (T-- > 0) {
-            solve(sc);
-        }
-        sc.close();
-    }
-
-    // private static long gcd(long a, long b) {
-    // while (b != 0) {
-    // long temp = b;
-    // b = a % b;
-    // a = temp;
-    // }
-    // return a;
-    // }
-
-    // private static long lcm(long a, long b) {
-    // return a * b / gcd(a, b);
-    // }
-
-    // static class Pair implements Comparable<Pair> {
-    // long first;
-    // long second;
-    //
-    // Pair(long _first, long _second) {
-    // this.first = _first;
-    // this.second = _second;
-    // }
-    // @Override
-    // public int compareTo(Pair o) {
-    // return Long.compare(this.first, o.first);
-    // }
-    // @Override
-    // public String toString() {
-    // return "(" + first + ',' + second + ")";
-    // }
-    // }
+//     static long gcd(long a, long b) {
+//         while (b != 0) {
+//             long temp = b;
+//             b = a % b;
+//             a = temp;
+//         }
+//         return a;
+//     }
+//
+//     static long lcm(long a, long b) {
+//         return a * b / gcd(a, b);
+//     }
+//
+//     static class Pair implements Comparable<Pair> {
+//         long first;
+//         long second;
+//
+//         Pair() {
+//             this.first = 0L;
+//             this.second = 0L;
+//         }
+//
+//         Pair(long _first, long _second) {
+//             this.first = _first;
+//             this.second = _second;
+//         }
+//         @Override
+//         public int compareTo(Pair o) {
+//             if (this.first != o.first) {
+//                 return Long.compare(this.first, o.first);
+//             }
+//             return Long.compare(this.second, o.second);
+//         }
+//         @Override
+//         public String toString() {
+//             return "(" + first + ',' + second + ")";
+//         }
+//         @Override
+//         public boolean equals(Object o) {
+//             if (this == o)
+//                 return true;
+//             if (o == null || getClass() != o.getClass())
+//                 return false;
+//             Pair pair = (Pair) o;
+//             return first == pair.first && second == pair.second;
+//         }
+//         @Override
+//         public int hashCode() {
+//             return Objects.hash(first, second);
+//         }
+//     }
 }
