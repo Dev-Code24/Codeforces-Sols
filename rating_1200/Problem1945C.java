@@ -29,7 +29,7 @@ public class Problem1945C {
             int ans = -1000;
             for(int i = 0; i < n + 1; i++){
                 if((i - pref[i]) >= (i + 1) / 2 && (pref[n] - pref[i]) >= (n - i + 1) /2 && abs(2 * ans - n) > abs(2*i - n))
-                        ans = i;
+                    ans = i;
             }
 
             out.println(ans);
