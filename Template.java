@@ -11,16 +11,17 @@ public class Template {
     static PrintWriter out;
     static StringTokenizer st;
 
+    static void solve() throws IOException {
+        int n = parseInt(nextToken());
+        // Add code here
+    }
+
     public static void main(String[] args) throws IOException {
 
         br = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(new BufferedOutputStream(System.out));
         int TC = parseInt(nextToken());
-        while (TC-- > 0) {
-            int n = parseInt(nextToken());
-            // Add logic here
-        }
-
+        while (TC-- > 0) solve();
         out.flush();
         out.close();
         br.close();
