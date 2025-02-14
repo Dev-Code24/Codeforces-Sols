@@ -1,71 +1,59 @@
+import java.io.*;
 import java.util.*;
 
+import static java.lang.Integer.parseInt;
+// import static java.lang.Math.min;
+// import static java.lang.Math.max;
+// import static java.lang.Math.abs;
+
 public class Problem1909B {
-    static int n;
-    static long a[];
+    static BufferedReader br;
+    static PrintWriter out;
+    static StringTokenizer st;
 
-    public static void solve(Scanner sc) {
-        n = sc.nextInt();
-        a = new long[n];
+    static void solve() throws IOException {
+        int n = parseInt(nextToken());
+        long a[] = new long[n];
+        var odd = false;
+        var even = false;
         for (int i = 0; i < n; i++) {
-            a[i] = sc.nextLong();
-        }
-        // if the array contains atleast 1 odd and 1 even number then k = 2
-        // if the array contains only odd or only even, then?
-
-        for (int i = 1; i < 60; i++) {
-            Map<Long, Integer> map = new HashMap<>();
-            long k = 1l << i;
-            for (int j = 0; j < n; j++) {
-                map.put(a[j] % k, map.getOrDefault(a[j] % k, 0) + 1);
-            }
-            if (map.size() == 2) {
-                System.out.println(k);
-                return;
-            }
+            a[i] = Long.parseLong(nextToken());
+            if ((a[i] & 1) == 0) even = true;
+            else odd = true;
         }
 
-        System.out.println(2);
-        return;
+        if(odd && even) {
+            out.println(2);
+        } else {
+            long ans = 2;
+            while(true) {
+                var set = new TreeSet<Long>();
+                for(int i = 0; i < n; i++) set.add(a[i] % ans) ;
+                if(set.size() == 2) {
+                    out.println(ans);
+                    break;
+                }
+                ans *= 2;
+            }
+        }
+
     }
 
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-        while (T-- > 0) {
-            solve(sc);
-        }
-        sc.close();
+    public static void main(String[] args) throws IOException {
+
+        br = new BufferedReader(new InputStreamReader(System.in));
+        out = new PrintWriter(new BufferedOutputStream(System.out));
+        int TC = parseInt(nextToken());
+        while (TC-- > 0) solve();
+        out.flush();
+        out.close();
+        br.close();
     }
 
-    // private static long gcd(long a, long b) {
-    // while (b != 0) {
-    // long temp = b;
-    // b = a % b;
-    // a = temp;
-    // }
-    // return a;
-    // }
-
-    // private static long lcm(long a, long b) {
-    // return a * b / gcd(a, b);
-    // }
-
-    // static class Pair implements Comparable<Pair> {
-    // long first;
-    // long second;
-    //
-    // Pair(long _first, long _second) {
-    // this.first = _first;
-    // this.second = _second;
-    // }
-    // @Override
-    // public int compareTo(Pair o) {
-    // return Long.compare(this.first, o.first);
-    // }
-    // @Override
-    // public String toString() {
-    // return "(" + first + ',' + second + ")";
-    // }
-    // }
+    static String nextToken() throws IOException {
+        while (st == null || !st.hasMoreTokens()) {
+            st = new StringTokenizer(br.readLine());
+        }
+        return st.nextToken();
+    }
 }
