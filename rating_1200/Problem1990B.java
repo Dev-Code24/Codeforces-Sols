@@ -2,24 +2,34 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
-// import static java.lang.Math.min;
-// import static java.lang.Math.max;
+ import static java.lang.Math.min;
+ import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-public class Problem1857C {
+public class Problem1990B {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
 
     static void solve() throws IOException {
-        int n = parseInt(nextToken());
-        int m = n * (n - 1) / 2, b[] = new int[m];
-        for (int i = 0; i < m; i++) b[i] = parseInt(nextToken());
+        int n = parseInt(nextToken()), x = parseInt(nextToken()), y = parseInt(nextToken());
+        x--;
+        y--;
 
-        Arrays.sort(b);
+        int a[] = new int[n];
 
-        for (int i = 0; i < m; i += --n) out.print(b[i] + " ");
-        out.println((int)1e9);
+        for(int i = y - 1; i >= 0; i-=2) {
+            a[i] = -1;
+            if (i - 1 >= 0) a[i - 1] = 1;
+        }
+        for(int i = x + 1; i < n; i+=2) {
+            a[i] = -1;
+            if(i + 1 < n) a[i + 1] = 1;
+        }
+
+        for(int i = y; i <= x; i++) a[i] = 1;
+        for(int i = 0; i < n; i++) out.print(a[i] + " ");
+        out.println();
     }
 
     public static void main(String[] args) throws IOException {
