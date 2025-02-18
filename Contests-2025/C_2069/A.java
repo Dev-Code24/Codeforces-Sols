@@ -6,7 +6,7 @@ import static java.lang.Integer.parseInt;
 // import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-public class Template {
+public class A {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
