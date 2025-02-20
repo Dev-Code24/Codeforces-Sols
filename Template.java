@@ -10,6 +10,7 @@ public class Template {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
+    // Avoid Map for frequency based operations, instead use Arrays for significant improvement in Time Complexity
 
     static void solve() throws IOException {
         int n = parseInt(nextToken());
