@@ -1,0 +1,9 @@
+{
+
+        "java.completion.enabled": true, // Disable full autocompletion
+        "editor.suggest.showMethods": true, // Enable method suggestions
+        "editor.suggest.showProperties": true, // Enable property suggestions
+        "editor.suggest.showFunctions": true, // Enable function suggestions
+        "editor.suggest.showClasses": true,
+    
+}
