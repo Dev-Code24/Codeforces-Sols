@@ -10,7 +10,12 @@ public class Template {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
-    // Avoid Map for frequency based operations, instead use Arrays for significant improvement in Time Complexity
+//  Avoid Map for frequency based operations, instead use Arrays for significant improvement in Time Complexity
+
+//  @FunctionalInterface
+//    interface Help {
+//        int f(int a);
+//   }
 
     static void solve() throws IOException {
         int n = parseInt(nextToken());
