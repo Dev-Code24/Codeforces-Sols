@@ -2,25 +2,41 @@ import java.io.*;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
-// import static java.lang.Math.min;
-// import static java.lang.Math.max;
+ import static java.lang.Math.min;
+ import static java.lang.Math.max;
 // import static java.lang.Math.abs;
 
-public class Problem1593B {
+public class Problem1808A {
     static BufferedReader br;
     static PrintWriter out;
     static StringTokenizer st;
     // Avoid Map for frequency based operations, instead use Arrays for significant improvement in Time Complexity
 
+    @FunctionalInterface
+    interface Helper {
+        int diff(int num);
+    }
+
     static void solve() throws IOException {
-        char in[] = nextToken().toCharArray();
-        int n = in.length,  ans = 0;
-        for(int i = 0; i < n; i++) {
-            for(int j = i + 1; j < n; j++) {
-                if(in[i] == '0' && in[j] == '0') ans = n - 2 - i;
-                if(in[i] == '5' && in[j] == '0') ans = n - 2 - i;
-                if(in[i] == '2' && in[j] == '5') ans = n - 2 - i;
-                if(in[i] == '7' && in[j] == '5') ans = n - 2 - i;
+        int l = parseInt(nextToken()), r = parseInt(nextToken());
+        r = min(r,l + 100);
+
+        Helper f = (num) -> {
+            int mn = Integer.MAX_VALUE, mx = Integer.MIN_VALUE;
+            while(num > 0) {
+                mn = min(mn, num % 10);
+                mx = max(mx, num % 10);
+                num /= 10;
+            }
+
+            return mx - mn;
+        };
+
+        int mx = -1, ans = -1;
+        for(int i = l; i <= r; i++) {
+            if(f.diff(i) > mx) {
+                mx = f.diff(i);
+                ans = i;
             }
         }
         out.println(ans);
